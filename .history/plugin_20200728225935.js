@@ -64,7 +64,7 @@ async function plugin(fastify, opts) {
         }
       }
 
-      const [accessToken, refreshToken] = await utility.getAccessTokens(
+      const [accessToken, refreshToken] = await utility.geAccessTokens(
         request.query.code
       );
       debugCallback("userAccessToken: %s", accessToken);
