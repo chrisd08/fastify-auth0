@@ -16,10 +16,7 @@ const hookFactory = function (fastify, options) {
     const requestUrl = new URL(request.raw.url, "http://dummydomain.com");
     debugHook("received request at %s (from preHandler hook)", request.raw.url);
     debugHook("request.session: %j", request.session);
-    if (
-      requestUrl.pathname === options.handlerPath ||
-      options.whitelist.some(path => requestUrl.pathname === path)
-    ) {
+    if (requestUrl.pathname === options.handlerPath) {
       return debugHook("hook does not apply to %s", requestUrl.pathname);
     }
     const session = await options.getSession(request);
